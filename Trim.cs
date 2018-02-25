@@ -10,7 +10,7 @@ public static class Trim
         {
             PropertyInfo[] property = obj
                                         .GetType()
-                                        .GetProperties()
+                                        .GetProperties(BindingFlags.Public | BindingFlags.Instance)
                                         .Where(x => x.PropertyType == typeof(System.String))
                                         .ToArray();
 
