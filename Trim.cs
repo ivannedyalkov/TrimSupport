@@ -26,7 +26,10 @@ public static class Trim
                     value = null;
                 }
 
-                prop.SetValue(obj, value);
+                if (value != null)
+                {
+                        prop.SetValue(obj, value);
+                }
             }
         }
     }
