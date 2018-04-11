@@ -21,14 +21,9 @@ public static class Trim
                                   .ToString()? 
                                   .Trim();
 
-                if ((string)value == String.Empty)
+                if ((string)value != String.Empty)
                 {
-                    value = null;
-                }
-
-                if (value != null)
-                {
-                        prop.SetValue(obj, value);
+                    prop.SetValue(obj, value);
                 }
             }
         }
