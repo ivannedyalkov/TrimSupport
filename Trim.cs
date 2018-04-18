@@ -7,13 +7,14 @@ public static class Trim
 {
     public static void TrimSupport(object obj)
     {
-        if (obj.GetType().IsClass)
+        Type type = obj.GetType();
+
+        if (type.IsClass)
         {
-            IEnumerable<PropertyInfo> property = obj
-                                            .GetType()
-                                            .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                            .Where(x => x.PropertyType == typeof(System.String))
-                                            .AsEnumerable();
+            IEnumerable<PropertyInfo> property = type
+                                                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                                    .Where(x => x.PropertyType == typeof(System.String))
+                                                    .AsEnumerable();
 
             foreach (PropertyInfo prop in property)
             {
