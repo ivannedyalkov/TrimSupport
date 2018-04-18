@@ -8,11 +8,11 @@ public static class Trim
     {
         if (obj.GetType().IsClass)
         {
-            PropertyInfo[] property = obj
-                                        .GetType()
-                                        .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                        .Where(x => x.PropertyType == typeof(System.String))
-                                        .ToArray();
+            IEnumerable<PropertyInfo> property = obj
+                                            .GetType()
+                                            .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                            .Where(x => x.PropertyType == typeof(System.String))
+                                            .AsEnumerable();
 
             foreach (PropertyInfo prop in property)
             {
@@ -21,7 +21,7 @@ public static class Trim
                                   .ToString()? 
                                   .Trim();
 
-                if ((string)value != String.Empty)
+                if (!String.IsNullOrEmpty((string)value))
                 {
                     prop.SetValue(obj, value);
                 }
